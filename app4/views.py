@@ -156,7 +156,7 @@ def obtenerDatosUsuario(request):
     el objeto Json con la informacion necesaria.
     """
     usuarioEditar = User.objects.get(id=idUsuario)
-    usuarioExt = datosUsuario.objects.get(userRel=usuarioEditar)
+    usuarioExtendido = datosUsuario.objects.get(userRel=usuarioEditar)
 
     return JsonResponse({
         'resp':'200',
@@ -164,10 +164,10 @@ def obtenerDatosUsuario(request):
         'usernameUsuario': usuarioEditar.username,
         'nombreUsuario': usuarioEditar.first_name,
         'apellidoUsuario': usuarioEditar.last_name,
-        'profesionUsuario': usuarioExt.profesionUsuario,
+        'profesionUsuario': usuarioExtendido.profesionUsuario,
         'emailUsuario': usuarioEditar.email,
-        'nroCelular': usuarioExt.nroCelular,
-        'perfilUsuario': usuarioExt.perfilUsuario
+        'nroCelular': usuarioExtendido.nroCelular,
+        'perfilUsuario': usuarioExtendido.perfilUsuario
     })
 
 def actualizarUsuario(request):
@@ -179,5 +179,23 @@ def actualizarUsuario(request):
     de la base de datos. Con el objeto capturado modificar los campos respectivos y finalmente
     ejecutar el metodo save() para su respectiva actualizacion
     """
+    idUsuario = request.POST.get('idUsuario')
+    usuarioEdit = User.objects.get(id=idUsuario)
+    usuarioExt = datosUsuario.objects.get(userRel=usuarioEdit)
 
-    return HttpResponseRedirect(reverse('app4:consolaAdministrador'))
+    if request.method == 'POST':
+        nombreUsuarioDetalle = request.POST.get('nombreUsuarioDetalle')
+        apellidoUsuarioDetalle = request.POST.get('apellidoUsuarioDetalle')
+        profesionUsuarioDetalle = request.POST.get('profesionUsuarioDetalle')
+        nroCelularDetalle = request.POST.get('nroCelularDetalle')
+        perfilUsuarioDetalle = request.POST.get('perfilUsuarioDetalle')
+        usuarioEdit.first_name = nombreUsuarioDetalle
+        usuarioEdit.last_name = apellidoUsuarioDetalle
+        usuarioEdit.save()
+        usuarioExt.profesionUsuario = profesionUsuarioDetalle
+        usuarioExt.nroCelular = nroCelularDetalle
+        usuarioExt.perfilUsuario = perfilUsuarioDetalle
+        usuarioExt.save()
+        return HttpResponseRedirect(reverse('app4:consolaAdministrador'))    
+
+    #return HttpResponseRedirect(reverse('app4:consolaAdministrador'))
