@@ -127,21 +127,6 @@ function cargarInformacionUsuario(idUsuario)
         emailUsuarioDetalle.value = data.emailUsuario
         perfilUsuarioDetalle.value = data.perfilUsuario
         nroCelularDetalle.value = data.nroCelular
-/*
-        for(let j = 0; j < data.comentariosTotales.length; j++)
-        {
-            seccionComentario = `
-            <div class="row mb-3">
-                <div class="col-3">
-                    ${data.comentariosTotales[j][0]}
-                </div>
-                <div class="col-9">
-                    ${data.comentariosTotales[j][1]}
-                </div>
-            </div>
-            `
-            comentariosTareaTotales.innerHTML = comentariosTareaTotales.innerHTML + seccionComentario
-        }
-*/
+
     })
 }

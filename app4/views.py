@@ -156,7 +156,7 @@ def obtenerDatosUsuario(request):
     el objeto Json con la informacion necesaria.
     """
     usuarioEditar = User.objects.get(id=idUsuario)
-    usuarioExt = datosUsuario.objects.get(id=idUsuario)
+    usuarioExt = datosUsuario.objects.get(userRel=usuarioEditar)
 
     return JsonResponse({
         'resp':'200',
