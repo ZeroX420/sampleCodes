@@ -100,4 +100,48 @@ function cargarInformacionUsuario(idUsuario)
     Revisar la implementacion realizada en clase para el detalle de las
     tareas.
     */
+    console.log("Se cargara la informacion del usuario %s",idUsuario)
+    fetch(`/obtenerDatosUsuario?idUsuario=${idUsuario}`)
+    .then(response => response.json())
+    .then(data => {
+        usernameUsuario = document.getElementById('usernameUsuario')
+        nombreUsuario = document.getElementById('nombreUsuario')
+        apellidoUsuario = document.getElementById('apellidoUsuario')
+        profesionUsuario = document.getElementById('profesionUsuario')
+        emailUsuario = document.getElementById('emailUsuario')
+        perfilUsuario = document.getElementById('perfilUsuario')
+        nroCelular = document.getElementById('nroCelular')
+
+        usernameUsuario.value = ''
+        nombreUsuario.value = ''
+        apellidoUsuario.value = ''
+        profesionUsuario.value = ''
+        emailUsuario.value = ''
+        perfilUsuario.value = ''
+        nroCelular.value = ''
+        
+        usernameUsuario.value = data.usernameUsuario
+        nombreUsuario.value = data.nombreUsuario
+        apellidoUsuario.value = data.apellidoUsuario
+        profesionUsuario.value = data.profesionUsuario
+        emailUsuario.value = data.emailUsuario
+        perfilUsuario.value = data.perfilUsuario
+        nroCelular.value = data.nroCelular
+/*
+        for(let j = 0; j < data.comentariosTotales.length; j++)
+        {
+            seccionComentario = `
+            <div class="row mb-3">
+                <div class="col-3">
+                    ${data.comentariosTotales[j][0]}
+                </div>
+                <div class="col-9">
+                    ${data.comentariosTotales[j][1]}
+                </div>
+            </div>
+            `
+            comentariosTareaTotales.innerHTML = comentariosTareaTotales.innerHTML + seccionComentario
+        }
+*/
+    })
 }
