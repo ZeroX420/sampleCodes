@@ -10,6 +10,10 @@ import json
 
 # Create your views here.
 def index(request):
+    usuariosTotales = User.objects.all()
+    listaObjetos = []
+    for user in usuariosTotales:
+        listaObjetos.append(user.first_name)
     if request.method == 'POST':
         nombreUsuario = request.POST.get('nombreUsuario')
         contraUsuario = request.POST.get('contraUsuario')
@@ -21,7 +25,8 @@ def index(request):
             return HttpResponseRedirect(reverse('app4:index'))
     return render(request,'ingresoUsuario.html',{
         'mensajeBienvenida':"Hola a todos, bienvenidos al sistema de gestion de tareas",
-        'listaObjetos':['Alexander','Martin','Diego']
+        'listaObjetos': listaObjetos
+        #'listaObjetos':['Alexander','Martin','Diego']
     })
 
 @login_required(login_url='/')
@@ -179,9 +184,6 @@ def actualizarUsuario(request):
     de la base de datos. Con el objeto capturado modificar los campos respectivos y finalmente
     ejecutar el metodo save() para su respectiva actualizacion
     """
-    idUsuario = request.POST.get('idUsuario')
-    usuarioEdit = User.objects.get(id=idUsuario)
-    usuarioExt = datosUsuario.objects.get(userRel=usuarioEdit)
 
     if request.method == 'POST':
         nombreUsuarioDetalle = request.POST.get('nombreUsuarioDetalle')
@@ -189,6 +191,10 @@ def actualizarUsuario(request):
         profesionUsuarioDetalle = request.POST.get('profesionUsuarioDetalle')
         nroCelularDetalle = request.POST.get('nroCelularDetalle')
         perfilUsuarioDetalle = request.POST.get('perfilUsuarioDetalle')
+        idUsuario = request.POST.get('idUsuario')
+        usuarioEdit = User.objects.get(id=idUsuario)
+        usuarioExt = datosUsuario.objects.get(userRel=usuarioEdit)
+
         usuarioEdit.first_name = nombreUsuarioDetalle
         usuarioEdit.last_name = apellidoUsuarioDetalle
         usuarioEdit.save()
@@ -196,6 +202,4 @@ def actualizarUsuario(request):
         usuarioExt.nroCelular = nroCelularDetalle
         usuarioExt.perfilUsuario = perfilUsuarioDetalle
         usuarioExt.save()
-        return HttpResponseRedirect(reverse('app4:consolaAdministrador'))    
-
-    #return HttpResponseRedirect(reverse('app4:consolaAdministrador'))
+    return HttpResponseRedirect(reverse('app4:consolaAdministrador'))

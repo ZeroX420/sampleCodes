@@ -90,7 +90,7 @@ function getCookie(name)
     }
     return cookieValue;
 }
-/*
+
 function cargarInformacionUsuario(idUsuario)
 {
     /*
@@ -99,7 +99,7 @@ function cargarInformacionUsuario(idUsuario)
     obtenerInformacionUsuario?idUsuario=${idUsuario}
     Revisar la implementacion realizada en clase para el detalle de las
     tareas.
-    
+    */
     console.log("Se cargara la informacion del usuario %s",idUsuario)
     fetch(`/obtenerDatosUsuario?idUsuario=${idUsuario}`)
     .then(response => response.json())
@@ -111,6 +111,7 @@ function cargarInformacionUsuario(idUsuario)
         emailUsuarioDetalle = document.getElementById('emailUsuarioDetalle')
         perfilUsuarioDetalle = document.getElementById('perfilUsuarioDetalle')
         nroCelularDetalle = document.getElementById('nroCelularDetalle')
+        idUsuarioDetalle = document.getElementById('idUsuario')
 
         usernameUsuarioDetalle.value = ''
         nombreUsuarioDetalle.value = ''
@@ -119,6 +120,7 @@ function cargarInformacionUsuario(idUsuario)
         emailUsuarioDetalle.value = ''
         perfilUsuarioDetalle.value = ''
         nroCelularDetalle.value = ''
+        idUsuarioDetalle.value = ''
         
         usernameUsuarioDetalle.value = data.usernameUsuario
         nombreUsuarioDetalle.value = data.nombreUsuario
@@ -127,54 +129,7 @@ function cargarInformacionUsuario(idUsuario)
         emailUsuarioDetalle.value = data.emailUsuario
         perfilUsuarioDetalle.value = data.perfilUsuario
         nroCelularDetalle.value = data.nroCelular
-
-    })
-}
-*/
-function cargarInformacionUsuario(idUsuario)
-{
-    /*
-    PREGUNTA 3
-    Desarrollar la función de javascript que permita consultar la ruta
-    obtenerInformacionUsuario?idUsuario=${idUsuario}
-    Revisar la implementacion realizada en clase para el detalle de las
-    tareas.
-    */
-    const urls = [`/obtenerDatosUsuario?idUsuario=${idUsuario}`, `/actualizarUsuario?idUsuario=${idUsuario}`]
-    const fetchPromises = urls.map(url => fetch(url))
-
-    console.log("Se cargara la informacion del usuario %s",idUsuario)
-    //fetch(`/obtenerDatosUsuario?idUsuario=${idUsuario}`)
-    Promise.all(fetchPromises)
-    .then(responses => {
-        const promises = responses.map(response => response.json());
-        return Promise.all(promises);
-    })
-    .then(data => {
-        const [data1, data2] = data
-        usernameUsuarioDetalle = document.getElementById('usernameUsuarioDetalle')
-        nombreUsuarioDetalle = document.getElementById('nombreUsuarioDetalle')
-        apellidoUsuarioDetalle = document.getElementById('apellidoUsuarioDetalle')
-        profesionUsuarioDetalle = document.getElementById('profesionUsuarioDetalle')
-        emailUsuarioDetalle = document.getElementById('emailUsuarioDetalle')
-        perfilUsuarioDetalle = document.getElementById('perfilUsuarioDetalle')
-        nroCelularDetalle = document.getElementById('nroCelularDetalle')
-
-        usernameUsuarioDetalle.value = ''
-        nombreUsuarioDetalle.value = ''
-        apellidoUsuarioDetalle.value = ''
-        profesionUsuarioDetalle.value = ''
-        emailUsuarioDetalle.value = ''
-        perfilUsuarioDetalle.value = ''
-        nroCelularDetalle.value = ''
-        
-        usernameUsuarioDetalle.value = data1.usernameUsuario
-        nombreUsuarioDetalle.value = data1.nombreUsuario
-        apellidoUsuarioDetalle.value = data1.apellidoUsuario
-        profesionUsuarioDetalle.value = data1.profesionUsuario
-        emailUsuarioDetalle.value = data1.emailUsuario
-        perfilUsuarioDetalle.value = data1.perfilUsuario
-        nroCelularDetalle.value = data1.nroCelular
+        idUsuarioDetalle.value = data.idUsuario
 
     })
 }
