@@ -19,7 +19,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-4 mt-3 mb-3 text-white">
                         <div class="row">
-                            <h5>Bienvenido {{ user.first_name }} {{ user.last_name }} </h5>
+                            <h5>Bienvenido {{ user.first_name }} {{ user.last_name }}</h5>
                         </div>
                         <div class="row">
                             <h5>{{ user.datosusuario.profesionUsuario }}</h5>
@@ -169,33 +169,33 @@
                     <div class="row form-group justify-content-around mb-3">
                         <div class="col-11">
                             <label>Username:</label>
-                            <input class="form-control" type="text" name="usernameUsuario" readonly>
+                            <input class="form-control" type="text" id="usernameUsuarioDetalle" readonly>
                         </div>
                     </div>
                     <div class="row form-group justify-content-around mb-3">
                         <div class="col-5">
                             <label>Nombre:</label>
-                            <input class="form-control" type="text" name="nombreUsuario" required>
+                            <input class="form-control" type="text" id="nombreUsuarioDetalle">
                         </div>
                         <div class="col-5">
                             <label>Apellido:</label>
-                            <input class="form-control" type="text" name="apellidoUsuario" required>
+                            <input class="form-control" type="text" id="apellidoUsuarioDetalle">
                         </div>
                     </div>
                     <div class="row form-group justify-content-around mb-3">
                         <div class="col-5">
                             <label>Profesion:</label>
-                            <input class="form-control" type="text" name="profesionUsuario" required>
+                            <input class="form-control" type="text" id="profesionUsuarioDetalle">
                         </div>
                         <div class="col-5">
                             <label>Email:</label>
-                            <input class="form-control" type="email" name="emailUsuario" readonly>
+                            <input class="form-control" type="email" id="emailUsuarioDetalle" readonly>
                         </div>
                     </div>
                     <div class="row form-group justify-content-around mb-3">
                         <div class="col-5">
                             <label>Nro de celular:</label>
-                            <input class="form-control" type="text" name="nroCelular" required>
+                            <input class="form-control" type="text" id="nroCelularDetalle">
                         </div>
                         <div class="col-5">
                         </div>
@@ -203,7 +203,7 @@
                     <div class="row form-group justify-content-around mb-3">
                         <div class="col-11">
                             <label>Perfil del usuario:</label>
-                            <textarea class="form-control" type="text" name="perfilUsuario" rows="4" required></textarea>
+                            <textarea class="form-control" type="text" id="perfilUsuarioDetalle" rows="4"></textarea>
                         </div>
                     </div>
                 </div>

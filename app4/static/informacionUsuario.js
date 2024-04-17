@@ -104,29 +104,29 @@ function cargarInformacionUsuario(idUsuario)
     fetch(`/obtenerDatosUsuario?idUsuario=${idUsuario}`)
     .then(response => response.json())
     .then(data => {
-        usernameUsuario = document.getElementById('usernameUsuario')
-        nombreUsuario = document.getElementById('nombreUsuario')
-        apellidoUsuario = document.getElementById('apellidoUsuario')
-        profesionUsuario = document.getElementById('profesionUsuario')
-        emailUsuario = document.getElementById('emailUsuario')
-        perfilUsuario = document.getElementById('perfilUsuario')
-        nroCelular = document.getElementById('nroCelular')
+        usernameUsuarioDetalle = document.getElementById('usernameUsuarioDetalle')
+        nombreUsuarioDetalle = document.getElementById('nombreUsuarioDetalle')
+        apellidoUsuarioDetalle = document.getElementById('apellidoUsuarioDetalle')
+        profesionUsuarioDetalle = document.getElementById('profesionUsuarioDetalle')
+        emailUsuarioDetalle = document.getElementById('emailUsuarioDetalle')
+        perfilUsuarioDetalle = document.getElementById('perfilUsuarioDetalle')
+        nroCelularDetalle = document.getElementById('nroCelularDetalle')
 
-        //usernameUsuario.value = ''
-        //nombreUsuario.value = ''
-        //apellidoUsuario.value = ''
-        //profesionUsuario.value = ''
-        //emailUsuario.value = ''
-        //perfilUsuario.value = ''
-        //nroCelular.value = ''
+        usernameUsuarioDetalle.value = ''
+        nombreUsuarioDetalle.value = ''
+        apellidoUsuarioDetalle.value = ''
+        profesionUsuarioDetalle.value = ''
+        emailUsuarioDetalle.value = ''
+        perfilUsuarioDetalle.value = ''
+        nroCelularDetalle.value = ''
         
-        usernameUsuario.value = data.usernameUsuario
-        nombreUsuario.value = data.nombreUsuario
-        apellidoUsuario.value = data.apellidoUsuario
-        profesionUsuario.value = data.profesionUsuario
-        emailUsuario.value = data.emailUsuario
-        perfilUsuario.value = data.perfilUsuario
-        nroCelular.value = data.nroCelular
+        usernameUsuarioDetalle.value = data.usernameUsuario
+        nombreUsuarioDetalle.value = data.nombreUsuario
+        apellidoUsuarioDetalle.value = data.apellidoUsuario
+        profesionUsuarioDetalle.value = data.profesionUsuario
+        emailUsuarioDetalle.value = data.emailUsuario
+        perfilUsuarioDetalle.value = data.perfilUsuario
+        nroCelularDetalle.value = data.nroCelular
 /*
         for(let j = 0; j < data.comentariosTotales.length; j++)
         {
