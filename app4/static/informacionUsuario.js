@@ -112,13 +112,13 @@ function cargarInformacionUsuario(idUsuario)
         perfilUsuario = document.getElementById('perfilUsuario')
         nroCelular = document.getElementById('nroCelular')
 
-        usernameUsuario.value = ''
-        nombreUsuario.value = ''
-        apellidoUsuario.value = ''
-        profesionUsuario.value = ''
-        emailUsuario.value = ''
-        perfilUsuario.value = ''
-        nroCelular.value = ''
+        //usernameUsuario.value = ''
+        //nombreUsuario.value = ''
+        //apellidoUsuario.value = ''
+        //profesionUsuario.value = ''
+        //emailUsuario.value = ''
+        //perfilUsuario.value = ''
+        //nroCelular.value = ''
         
         usernameUsuario.value = data.usernameUsuario
         nombreUsuario.value = data.nombreUsuario
