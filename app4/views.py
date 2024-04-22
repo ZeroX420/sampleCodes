@@ -24,9 +24,8 @@ def index(request):
         else:
             return HttpResponseRedirect(reverse('app4:index'))
     return render(request,'ingresoUsuario.html',{
-        'mensajeBienvenida':"Hola a todos, bienvenidos al sistema de gestion de tareas",
+        'mensajeBienvenida':"Hello everyone. Welcome to task management system.",
         'listaObjetos': listaObjetos
-        #'listaObjetos':['Alexander','Martin','Diego']
     })
 
 @login_required(login_url='/')
@@ -48,7 +47,7 @@ def perfilUsuario(request):
             descripcionTarea=descripcionTarea,
             fechaFin=datetime.datetime.strptime(fechaFin,'%Y-%m-%d'),
             fechaInicio=datetime.datetime.strptime(fechaInicio,'%Y-%m-%d'),
-            estadoTarea='PROGRESO',
+            estadoTarea='IN PROGRESS',
             usuarioResponsable=usrExt,
             usuarioCreador=request.user
         )
@@ -95,7 +94,7 @@ def cerrarSesion(request):
 
 def finalizarTarea(request,idTarea):
     tareaObj = tareasSistem.objects.get(id=idTarea)
-    tareaObj.estadoTarea = 'FINALIZADO'
+    tareaObj.estadoTarea = 'FINISHED'
     tareaObj.save()
     return HttpResponseRedirect(reverse('app4:perfilUsuario'))
 
